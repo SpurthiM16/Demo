@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    stages {
+        stage('Clone Git Repository') {
+            steps {
+                git branch: 'master', url: 'https://github.com/SpurthiM16/Demo.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh './Welcome.sh'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh './deploy.sh'
+            }
+        }
+    }
+}
